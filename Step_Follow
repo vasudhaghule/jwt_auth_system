@@ -1,0 +1,46 @@
+API Endpoints Main Service 
+● Register User
+   ○ POST /api/register
+   ○ Request Body: { "first_name": "John", "last_name": "Doe", "email": "john@example.com", "password": "password123" } 
+
+● Login User 
+   ○ POST /api/login 
+   ○ Request Body: { "email": "john@example.com", "password": "password123" } 
+
+● Protected Endpoint 
+  ○ POST /api/protected 
+  ○ Headers: { "Authorization": "Bearer <token> " }
+
+● Add Candidate 
+  ○ POST /api/candidate 
+  ○ Headers: { "Authorization": "Bearer <token>" }
+  ○ Request Body: { "first_name": "Alice", "last_name": "Smith", "email": "alice@example.com" } 
+
+● Get Candidates 
+  ○ GET /api/candidate 
+  ○ Headers: { "Authorization": "Bearer <token>" } 
+
+● Public Profile (via public API)
+ ○ GET /api/public/profile
+ ○ Headers: { "Authorization": "Bearer <token>" }
+
+● Public Candidates (via public API)
+  ○ GET /api/public/candidate
+  ○ Headers: { "Authorization": "Bearer <token>" } Public API Microservice 
+
+● Get Profile 
+ ○ POST /api/public/profile 
+ ○ Headers: { "x-api-key": "public_api_key" } 
+
+● Get Candidates 
+ ○ GET /api/public/candidate
+ ○ Headers: { "x-api-key": "public_api_key"
+
+Step 5: Running the Services 
+1. Start the main service: cd main-service node index.js 
+Start the public API service:
+2. cd ../public-api-service node index.js 
+
+Step 6: Testing Register a new user: 
+  curl -X POST http://localhost:3000/api/register -H "Content-Type: application/json" -d '{"first_name": "John", "last_name": "Doe", "email": "john@example.com", "password": "password123"}'
+  1. Login with the new user: curl -X POST http://localhost:3000/api/login -H "Content-Type: application/json" -d '{"email": "john@example.com", "password": "password123"}'
